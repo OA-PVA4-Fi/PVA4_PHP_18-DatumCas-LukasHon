@@ -1,4 +1,16 @@
 <?php
+// Načtení funkce z functions.php
+include 'functions.php';
+
+// Volání funkce pro českou lokalizaci
+$localizedDate = dateLocalized('cs_CZ', 'Tuesday, 14 December');
+
+// Výpis formátovaného data
+echo "Formátované datum: $localizedDate\n";
+?>
+
+
+<?php
 // Nastavení časové zóny na Českou republiku
 date_default_timezone_set('Europe/Prague');
 

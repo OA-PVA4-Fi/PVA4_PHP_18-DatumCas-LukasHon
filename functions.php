@@ -1,12 +1,20 @@
 <?php
-// Načtení funkce z functions.php
-include 'functions.php';
 
-// Volání funkce pro českou lokalizaci
-$localizedDate = dateLocalized('cs_CZ', 'Tuesday, 14 December');
+function dateLocalized($languageCode, $inputDate) {
+    // Nastavení časové zóny na Českou republiku
+    date_default_timezone_set('Europe/Prague');
 
-// Výpis formátovaného data
-echo "Formátované datum: $localizedDate\n";
+    // Nastavení jazyka pro lokalizaci
+    setlocale(LC_TIME, $languageCode);
+
+    // Převedení vstupního datumu na timestamp
+    $timestamp = strtotime($inputDate);
+
+    // Formátování data podle zvoleného jazyka
+    $formattedDate = strftime('%A, %e %B', $timestamp);
+
+    return $formattedDate;
+}
 ?>
 
 <?php
